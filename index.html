@@ -17,6 +17,7 @@
         let lost = 0;
         let win = 0;
         let tie = 0;
+        let wasted = 0;
 
         function getComputerChoice(){
             let randNum = Math.floor(Math.random() * (3)) + 1;
@@ -66,6 +67,7 @@
                     return 'You win!, Scissor beats Paper';
                 }
             } else {
+                wasted += 1;
                 return 'Please try again';
             }
         }
@@ -89,13 +91,14 @@
                 
             }
 
-            console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\n`);
+            console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\nwasted: ${wasted}`);
 
             checkWinner();
 
             lost = 0;
             tie = 0;
             win = 0;
+            wasted = 0;
 
         }
         
