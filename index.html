@@ -17,16 +17,45 @@
         function getComputerChoice(){
             let randNum = Math.floor(Math.random() * (3)) + 1;
 
-            return (randNum === 1) ? 'ROCK' : 
-            (randNum === 2) ? 'PAPER' :
-            'SCISSOR' 
+            if (randNum === 1) return 'ROCK';
+            else if (randNum === 2) return 'PAPER';
+            else return 'SCISSOR';
         }
 
         function getUserChoice(){
             return prompt('Rock, paper or scissor?').toUpperCase();
         }
 
-        
+        function playRound(computerChoice, userChoice){
+
+            if (userChoice === 'ROCK'){
+                if(computerChoice === 'ROCK'){
+                    return 'You tie! Rock ties with Rock';
+                } else if(computerChoice === 'PAPER'){
+                    return 'You lose! Paper beats Rock';
+                } else {
+                    return 'You win!, Rock beats Scissor';
+                }
+            } else if (userChoice === 'PAPER'){
+                if(computerChoice === 'PAPER'){
+                    return 'You tie! Paper ties with Paper';
+                } else if(computerChoice === 'SCISSOR'){
+                    return 'You lose! Scissor beats Paper';
+                } else {
+                    return 'You win!, Paper beats Rock';
+                }
+            } else if (userChoice === 'SCISSOR'){
+                if(computerChoice === 'SCISSOR'){
+                    return 'You tie! Scissor ties with Scissor';
+                } else if(computerChoice === 'Rock'){
+                    return 'You lose! Rock beats Scissor';
+                } else {
+                    return 'You win!, Scissor beats Paper';
+                }
+            } else {
+                return 'Please try again';
+            }
+        }
         
     </script>
 </body>
