@@ -14,6 +14,10 @@
 <body>
     <script>
 
+        let lost = 0;
+        let win = 0;
+        let tie = 0;
+
         function getComputerChoice(){
             let randNum = Math.floor(Math.random() * (3)) + 1;
 
@@ -30,31 +34,69 @@
 
             if (userChoice === 'ROCK'){
                 if(computerChoice === 'ROCK'){
+                    tie += 1;
                     return 'You tie! Rock ties with Rock';
                 } else if(computerChoice === 'PAPER'){
+                    lost += 1;
                     return 'You lose! Paper beats Rock';
                 } else {
+                    win += 1;
                     return 'You win!, Rock beats Scissor';
                 }
             } else if (userChoice === 'PAPER'){
                 if(computerChoice === 'PAPER'){
+                    tie += 1;
                     return 'You tie! Paper ties with Paper';
                 } else if(computerChoice === 'SCISSOR'){
+                    lost += 1;
                     return 'You lose! Scissor beats Paper';
                 } else {
+                    win += 1;
                     return 'You win!, Paper beats Rock';
                 }
             } else if (userChoice === 'SCISSOR'){
                 if(computerChoice === 'SCISSOR'){
+                    tie += 1;
                     return 'You tie! Scissor ties with Scissor';
                 } else if(computerChoice === 'Rock'){
+                    lost += 1;
                     return 'You lose! Rock beats Scissor';
                 } else {
+                    win += 1;
                     return 'You win!, Scissor beats Paper';
                 }
             } else {
                 return 'Please try again';
             }
+        }
+
+        function checkWinner(){
+
+            if(win > tie && win > lost){
+                return console.log('You win');
+            } else if (lost > tie && lost > tie){
+                return console.log('computer won');
+            } else {
+                return console.log('There was a tie');
+            }
+
+        }
+
+        function game(){
+            
+            for(let i = 1; i <= 5;  i++){
+                playRound(getComputerChoice(), getUserChoice());
+                
+            }
+
+            console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\n`);
+
+            checkWinner();
+
+            lost = 0;
+            tie = 0;
+            win = 0;
+
         }
         
     </script>
