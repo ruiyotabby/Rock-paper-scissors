@@ -17,10 +17,16 @@
         function getComputerChoice(){
             let randNum = Math.floor(Math.random() * (3)) + 1;
 
-            return (randNum === 1) ? 'Rock' : 
-            (randNum === 2) ? 'Paper' :
-            'Scissor' 
+            return (randNum === 1) ? 'ROCK' : 
+            (randNum === 2) ? 'PAPER' :
+            'SCISSOR' 
         }
+
+        function getUserChoice(){
+            return prompt('Rock, paper or scissor?').toUpperCase();
+        }
+
+        
         
     </script>
 </body>
