@@ -36,39 +36,39 @@
             if (userChoice === 'ROCK'){
                 if(computerChoice === 'ROCK'){
                     tie += 1;
-                    return 'You tie! Rock ties with Rock';
+                    return console.log('You tie! Rock ties with Rock');
                 } else if(computerChoice === 'PAPER'){
                     lost += 1;
-                    return 'You lose! Paper beats Rock';
+                    return console.log('You lose! Paper beats Rock');
                 } else {
                     win += 1;
-                    return 'You win!, Rock beats Scissor';
+                    return console.log('You win!, Rock beats Scissor');
                 }
             } else if (userChoice === 'PAPER'){
                 if(computerChoice === 'PAPER'){
                     tie += 1;
-                    return 'You tie! Paper ties with Paper';
+                    return console.log('You tie! Paper ties with Paper');
                 } else if(computerChoice === 'SCISSOR'){
                     lost += 1;
-                    return 'You lose! Scissor beats Paper';
+                    return console.log('You lose! Scissor beats Paper');
                 } else {
                     win += 1;
-                    return 'You win!, Paper beats Rock';
+                    return console.log('You win!, Paper beats Rock');
                 }
             } else if (userChoice === 'SCISSOR'){
                 if(computerChoice === 'SCISSOR'){
                     tie += 1;
-                    return 'You tie! Scissor ties with Scissor';
+                    return console.log('You tie! Scissor ties with Scissor');
                 } else if(computerChoice === 'Rock'){
                     lost += 1;
-                    return 'You lose! Rock beats Scissor';
+                    return console.log('You lose! Rock beats Scissor');
                 } else {
                     win += 1;
-                    return 'You win!, Scissor beats Paper';
+                    return console.log('You win!, Scissor beats Paper');
                 }
             } else {
                 wasted += 1;
-                return 'Please try again';
+                return console.log('Please try again');
             }
         }
 
