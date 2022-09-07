@@ -19,7 +19,11 @@ function getUserChoice(){
 const score = document.querySelector('.score');
 const player = document.querySelector('.player');
 const computer = document.querySelector('.computer');
-const same = document.querySelector('.tie'); // same name causes bug. fix it
+const same = document.querySelector('.tie');
+
+let winner = document.querySelector('.winner');
+let centre = document.querySelector('.centre');
+let gameBtns = document.querySelector('.game-btns');
 
 let restartGame = function() {
     lost = 0;
@@ -34,6 +38,9 @@ let restartGame = function() {
 
     computer.textContent = `Computer: ${lost}`;
     score.appendChild(computer);
+
+    winner.textContent = '';
+    centre.insertBefore(winner, gameBtns);
 }
 
 function playRound(computerChoice, userChoice){
@@ -95,9 +102,6 @@ function playRound(computerChoice, userChoice){
 }
 
 function checkWinner(){
-    let winner = document.querySelector('.winner');
-    let centre = document.querySelector('.centre');
-    let gameBtns = document.querySelector('.game-btns');
 
     if(win === 5){
         winner.textContent = 'You Win';
@@ -108,18 +112,6 @@ function checkWinner(){
     }
 
 }
-
-function game(){
-    
-    playRound(getComputerChoice(), getUserChoice());
-
-    console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\nwasted: ${wasted}`);
-
-    checkWinner(); 
-
-}
-
-
 
 let rock = document.querySelector('.rock');
 rock.addEventListener("click", () => playRound(getComputerChoice(), 'ROCK'));
