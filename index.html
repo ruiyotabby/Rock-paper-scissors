@@ -1,107 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            background-color:aqua;
-        }
-    </style>
-</head>
-<body>
-    <script>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock Paper Scissor Game</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
 
-        let lost = 0;
-        let win = 0;
-        let tie = 0;
-        let wasted = 0;
-
-        function getComputerChoice(){
-            let randNum = Math.floor(Math.random() * (3)) + 1;
-
-            if (randNum === 1) return 'ROCK';
-            else if (randNum === 2) return 'PAPER';
-            else return 'SCISSOR';
-        }
-
-        function getUserChoice(){
-            return prompt('Rock, paper or scissor?').toUpperCase();
-        }
-
-        function playRound(computerChoice, userChoice){
-
-            if (userChoice === 'ROCK'){
-                if(computerChoice === 'ROCK'){
-                    tie += 1;
-                    return console.log('You tie! Rock ties with Rock');
-                } else if(computerChoice === 'PAPER'){
-                    lost += 1;
-                    return console.log('You lose! Paper beats Rock');
-                } else {
-                    win += 1;
-                    return console.log('You win!, Rock beats Scissor');
-                }
-            } else if (userChoice === 'PAPER'){
-                if(computerChoice === 'PAPER'){
-                    tie += 1;
-                    return console.log('You tie! Paper ties with Paper');
-                } else if(computerChoice === 'SCISSOR'){
-                    lost += 1;
-                    return console.log('You lose! Scissor beats Paper');
-                } else {
-                    win += 1;
-                    return console.log('You win!, Paper beats Rock');
-                }
-            } else if (userChoice === 'SCISSOR'){
-                if(computerChoice === 'SCISSOR'){
-                    tie += 1;
-                    return console.log('You tie! Scissor ties with Scissor');
-                } else if(computerChoice === 'Rock'){
-                    lost += 1;
-                    return console.log('You lose! Rock beats Scissor');
-                } else {
-                    win += 1;
-                    return console.log('You win!, Scissor beats Paper');
-                }
-            } else {
-                wasted += 1;
-                return console.log('Please try again');
-            }
-        }
-
-        function checkWinner(){
-
-            if(win > tie && win > lost){
-                return console.log('You win');
-            } else if (lost > tie && lost > tie){
-                return console.log('computer won');
-            } else {
-                return console.log('There was a tie');
-            }
-
-        }
-
-        function game(){
-            
-            for(let i = 1; i <= 5;  i++){
-                playRound(getComputerChoice(), getUserChoice());
-                
-            }
-
-            console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\nwasted: ${wasted}`);
-
-            checkWinner();
-
-            lost = 0;
-            tie = 0;
-            win = 0;
-            wasted = 0;
-
-        }
-        
-    </script>
-</body>
+    </head>
+    <body>
+        <header>RockPaperScissor Game</header>
+        <div class="restart">
+            <button id="restart">Restart Game</button>
+        </div>
+        <div class="score">
+            <div class="player">Player: 0</div>
+            <div class="tie">Tie: 0</div>
+            <div class="computer">Computer: 0</div>
+        </div>
+        <div class="centre">
+            <p>Make Your Selection</p>
+            <div class="winner"></div>
+            <div class="game-btns">
+                <button class="rock">Rock</button>
+                <button class="paper">Paper</button>
+                <button class="scissor">Scissor</button>
+            </div>
+        </div>
+    </body>
 </html>
