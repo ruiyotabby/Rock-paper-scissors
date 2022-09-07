@@ -22,13 +22,13 @@ function playRound(computerChoice, userChoice){
     const score = document.querySelector('.score');
     const player = document.querySelector('.player');
     const computer = document.querySelector('.computer');
-    const tie = document.querySelector('.tie'); // same name causes bug. fix it
+    const same = document.querySelector('.tie'); // same name causes bug. fix it
 
     if (userChoice === 'ROCK'){
         if(computerChoice === 'ROCK'){
             tie += 1;
-            tie.textContent =  `Tie: ${tie}`;
-            score.appendChildBefore(tie, computer);
+            same.textContent =  `Tie: ${tie}`;
+            score.appendChildBefore(same, computer);
         } else if(computerChoice === 'PAPER'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
@@ -41,8 +41,8 @@ function playRound(computerChoice, userChoice){
     } else if (userChoice === 'PAPER'){
         if(computerChoice === 'PAPER'){
             tie += 1;
-            tie.textContent = `Tie: ${tie}`;
-            score.appendChildBefore(tie, computer);
+            same.textContent = `Tie: ${tie}`;
+            score.appendChildBefore(same, computer);
         } else if(computerChoice === 'SCISSOR'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
@@ -55,8 +55,8 @@ function playRound(computerChoice, userChoice){
     } else if (userChoice === 'SCISSOR'){
         if(computerChoice === 'SCISSOR'){
             tie += 1;
-            tie.textContent = `Tie: ${tie}`;
-            score.appendChildBefore(tie, computer);
+            same.textContent = `Tie: ${tie}`;
+            score.appendChildBefore(same, computer);
          } else if(computerChoice === 'Rock'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
