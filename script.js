@@ -16,55 +16,77 @@ function getUserChoice(){
 }
 
 
+const score = document.querySelector('.score');
+const player = document.querySelector('.player');
+const computer = document.querySelector('.computer');
+const same = document.querySelector('.tie'); // same name causes bug. fix it
+
+let restartGame = function() {
+    lost = 0;
+    tie = 0;
+    win = 0;
+    
+    same.textContent =`Tie: ${tie}`;
+    score.insertBefore(same, computer);
+
+    player.textContent = `Player: ${win}`;
+    score.insertBefore(player, same);
+
+    computer.textContent = `Computer: ${lost}`;
+    score.appendChild(computer);
+}
 
 function playRound(computerChoice, userChoice){
-
-    const score = document.querySelector('.score');
-    const player = document.querySelector('.player');
-    const computer = document.querySelector('.computer');
-    const same = document.querySelector('.tie'); // same name causes bug. fix it
 
     if (userChoice === 'ROCK'){
         if(computerChoice === 'ROCK'){
             tie += 1;
             same.textContent =  `Tie: ${tie}`;
-            score.appendChildBefore(same, computer);
+            score.insertBefore(same, computer);
         } else if(computerChoice === 'PAPER'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
             score.appendChild(computer);
+            checkWinner();
+            console.log(lost);
         } else {
             win += 1;
             player.textContent = `Player: ${win}`;
-            score.appendChildBefore(player, computer);
+            score.insertBefore(player, same);
+            checkWinner();
+            console.log(win);
         }
     } else if (userChoice === 'PAPER'){
         if(computerChoice === 'PAPER'){
             tie += 1;
             same.textContent = `Tie: ${tie}`;
-            score.appendChildBefore(same, computer);
+            score.insertBefore(same, computer);
         } else if(computerChoice === 'SCISSOR'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
             score.appendChild(computer);
+            checkWinner();
         } else {
             win += 1;
             player.textContent = `Player: ${win}`;
-            score.appendChildBefore(player, computer);
+            score.insertBefore(player, same);
+            checkWinner();
         }
     } else if (userChoice === 'SCISSOR'){
         if(computerChoice === 'SCISSOR'){
             tie += 1;
             same.textContent = `Tie: ${tie}`;
-            score.appendChildBefore(same, computer);
-         } else if(computerChoice === 'Rock'){
+            score.insertBefore(same, computer);
+         } else if(computerChoice === 'ROCK'){
             lost += 1;
             computer.textContent = `Computer: ${lost}`;
-            score.appendChild(player);
+            score.appendChild(computer);
+            checkWinner();
         } else {
             win += 1;
             player.textContent = `Player: ${win}`;
-            score.appendChildBefore(player, computer);
+            score.insertBefore(player, same);
+            checkWinner();
         }
     } else {
         wasted += 1;
@@ -73,13 +95,16 @@ function playRound(computerChoice, userChoice){
 }
 
 function checkWinner(){
+    let winner = document.querySelector('.winner');
+    let centre = document.querySelector('.centre');
+    let gameBtns = document.querySelector('.game-btns');
 
-    if(win > tie && win > lost){
-        return console.log('You win');
-    } else if (lost > tie && lost > tie){
-        return console.log('computer won');
-    } else {
-        return console.log('There was a tie');
+    if(win === 5){
+        winner.textContent = 'You Win';
+        centre.insertBefore(winner, gameBtns);
+    } else if(lost === 5){
+        winner.textContent = 'Computer Wins';
+        centre.insertBefore(winner, gameBtns);
     }
 
 }
@@ -90,22 +115,20 @@ function game(){
 
     console.log(`win: ${win}\ntie: ${tie}\nlost: ${lost}\nwasted: ${wasted}`);
 
-    checkWinner();
-
-    lost = 0;
-    tie = 0;
-    win = 0;
-    wasted = 0;
+    checkWinner(); 
 
 }
 
+
+
 let rock = document.querySelector('.rock');
-rock.addEventListener("click", () => {
-    playRound(getComputerChoice(), 'ROCK');
-});
+rock.addEventListener("click", () => playRound(getComputerChoice(), 'ROCK'));
 
 let paper = document.querySelector('.paper');
 paper.addEventListener('click',() =>  playRound(getComputerChoice(), 'PAPER'));
 
 let scissor = document.querySelector('.scissor');
 scissor.addEventListener('click', () => playRound(getComputerChoice(), 'SCISSOR'));
+
+let restart = document.querySelector('#restart');
+restart.addEventListener('click', () => restartGame());
